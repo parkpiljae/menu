@@ -1,0 +1,22 @@
+<%= @gun_num[0].food %> </br>
+
+<% @chan.each do |t|%>
+	<%= t.chan_date%> </br>
+	<%= t.chan_type%> </br>
+	<%= t.food%> </br>
+<%end%>
+<% @gun.each do |t|%>
+	<%= t.gun_date%> </br>
+	<%= t.gun_type%> </br>
+	<%= t.food%> </br>
+<%end%>  
+
+<form action="/crawl">
+  <input type="submit" value="크롤">
+</form>
+
+
+
+<form action="/update">
+  <input type="submit" value="업데이트">
+</form>
