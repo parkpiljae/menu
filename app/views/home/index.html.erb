@@ -1,4 +1,4 @@
-<%= @gun_num[0].food %> </br>
+<!--<%= @gun_num[0].food %> </br>
 
 <% @chan.each do |t|%>
 	<%= t.chan_date%> </br>
@@ -9,14 +9,46 @@
 	<%= t.gun_date%> </br>
 	<%= t.gun_type%> </br>
 	<%= t.food%> </br>
-<%end%>  
+<%end%>  -->
+<div class="container">
+	
+	  <select name="cars">
+	  	<% Gun.uniq.pluck(:gun_date).each do |t|%>
 
-<form action="/crawl">
-  <input type="submit" value="크롤">
-</form>
+	    <option value="<%= t%>" id = "data_value"><%= t%></option>
+	
+	    <%end%>
+	  </select>
+	  <input type="submit" value="Submit" class="reply">
+
+		<!--아무것도아니다-->
+	<hr>
+	<form action="/crawl">
+	  <input type="submit" value="크롤">
+	</form>
 
 
+	<form action="/update">
+	  <input type="submit" value="업데이트">
+	</form>
+</div>
 
-<form action="/update">
-  <input type="submit" value="업데이트">
-</form>
+<script>
+	$('.reply').click(function(){
+	
+	selector = $('#data_value').val();
+	alert(selector);
+	$.ajax({
+	  method: "POST",
+	  url: "/home/food_select",
+	  data: { date: selector}
+	})
+	  .done(function() {
+	    //$( "#ulist" ).append( "<li>"+reply_content+"</li>" );
+	   // $('#reply_content').val('')
+	  });
+	 })
+$( "#reply_content" ).keypress(function() {
+  console.log( "Handler for .keypress() called." );
+});
+</script>

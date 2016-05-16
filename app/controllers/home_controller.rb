@@ -16,9 +16,6 @@ class HomeController < ApplicationController
     @chan = Chan.all
   	@gun =  Gun.all
     @gun_num = Gun.where(gun_date: '2016-05-09',gun_type: '중식')
-
-
-
   end
   
   def crawl
@@ -100,5 +97,7 @@ class HomeController < ApplicationController
 
 
     redirect_to :back
+  end
+  def food_select
   end
 end
